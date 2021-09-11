@@ -14,9 +14,7 @@ function App() {
   const [description, setDesc] = useState('');
   const [status, setStat] = useState(false);
   const [todos, setTodos] = useState([]);
-  const [editTodo, setEditTodo] = useState(null);
-
-  // console.log(editTodo);
+  const [editTodo, setEditTodo] = useState('');
 
   useEffect(() => {
     getItemData();
@@ -37,7 +35,14 @@ function App() {
         editTodo={editTodo}
         setEditTodo={setEditTodo}
       />
-      <List todos={todos} setTodos={setTodos} setEditTodo={setEditTodo} />
+      <List
+        todos={todos}
+        setTodos={setTodos}
+        title={title}
+        description={description}
+        status={status}
+        setEditTodo={setEditTodo}
+      />
     </div>
   );
 }

@@ -65,6 +65,7 @@ export default function Add(props) {
     event.preventDefault();
 
     if (!editTodo) {
+      let todayDate = new Date();
       setTodos([
         ...todos,
         {
@@ -72,6 +73,7 @@ export default function Add(props) {
           title: title,
           description: description,
           status: status,
+          createdAt: todayDate,
         },
       ]);
       setTitle('');
@@ -80,6 +82,22 @@ export default function Add(props) {
       checkType(false);
     } else {
       updateTodo(title, editTodo.id, description, status);
+    }
+  };
+
+  const btnSwitch = () => {
+    if (editTodo) {
+      return (
+        <Button type="submit" color="success" className="mt-2 px-4">
+          Edit
+        </Button>
+      );
+    } else {
+      return (
+        <Button type="submit" color="primary" className="mt-2 px-4">
+          Add
+        </Button>
+      );
     }
   };
 
@@ -114,9 +132,7 @@ export default function Add(props) {
         />{' '}
         isDone
       </FormGroup>
-      <Button type="submit" color="success" className="mt-2 px-4">
-        Submit
-      </Button>
+      {btnSwitch()}
     </Form>
   );
 }

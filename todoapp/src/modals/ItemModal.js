@@ -8,14 +8,15 @@ export default function ItemModal(props) {
   const handleEdit = ({ id }) => {
     const findItem = todos.find((item) => item.id === id);
     setEditTodo(findItem);
-    // console.log(findItem);
     setModal(false);
+    window.scrollTo(0, 0);
   };
 
   const handleDelete = ({ id }) => {
     setTodos(todos.filter((item) => item.id !== id));
     setModal(false);
   };
+
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle}>
@@ -26,9 +27,6 @@ export default function ItemModal(props) {
             Edit
           </Button>{' '}
           <Button color="danger" onClick={() => handleDelete(detail)}>
-            Delete
-          </Button>
-          <Button color="danger" onClick={() => showModalEdit()}>
             Delete
           </Button>
         </ModalFooter>
