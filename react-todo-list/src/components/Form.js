@@ -1,7 +1,26 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react';
 
-export default function Form({ input, setInput, todos, setTodos }) {
+export default function Form(props) {
+  const { input, setInput, todos, setTodos, editTodo, setEditTodo } = props;
+
+  useEffect(() => {
+    if (editTodo) {
+      setInput(editTodo.title);
+    } else {
+      setInput('');
+    }
+  }, [setInput, editTodo]);
+
+  const updateTodo = (title, id, completed) => {
+    const newTodo = todos.map((todo) =>
+      todo.id === id ? { title, id, completed } : todo
+    );
+    setTodos(newTodo);
+    setEditTodo('');
+  };
+
   const onInputChange = (event) => {
     setInput(event.target.value);
   };
@@ -9,8 +28,12 @@ export default function Form({ input, setInput, todos, setTodos }) {
   const onBtnSubmit = (event) => {
     event.preventDefault();
 
-    setTodos([...todos, { id: uuidv4(), title: input, completed: false }]);
-    setInput('');
+    if (!editTodo) {
+      setTodos([...todos, { id: uuidv4(), title: input, completed: false }]);
+      setInput('');
+    } else {
+      updateTodo(input, editTodo.id, editTodo.completed);
+    }
   };
 
   return (
