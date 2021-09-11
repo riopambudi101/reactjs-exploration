@@ -12,6 +12,7 @@ function App() {
   const [input, setInput] = useState('');
   const [todos, setTodos] = useState([]);
   const [editTodo, setEditTodo] = useState(null);
+  // console.log(editTodo);
 
   useEffect(() => {
     getItemData();

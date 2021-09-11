@@ -14,10 +14,12 @@ export default function Form(props) {
   }, [setInput, editTodo]);
 
   const updateTodo = (title, id, completed) => {
+    // console.log(title, id, completed);
     const newTodo = todos.map((todo) =>
       todo.id === id ? { title, id, completed } : todo
     );
     setTodos(newTodo);
+    // console.log(newTodo);
     setEditTodo('');
   };
 
