@@ -17,19 +17,33 @@ export default function ItemModal(props) {
     setModal(false);
   };
 
-  return (
-    <div>
-      <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>{detail.title}</ModalHeader>
-        <ModalBody>{detail.description}</ModalBody>
-        <ModalFooter>
+  const btnCompleteOrIncomplete = () => {
+    if (detail.status === 1 || detail.status === true) {
+      return (
+        <Button color="success" onClick={() => handleEdit(detail)}>
+          Edit
+        </Button>
+      );
+    } else {
+      return (
+        <div>
           <Button color="success" onClick={() => handleEdit(detail)}>
             Edit
           </Button>{' '}
           <Button color="danger" onClick={() => handleDelete(detail)}>
             Delete
           </Button>
-        </ModalFooter>
+        </div>
+      );
+    }
+  };
+
+  return (
+    <div>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>{detail.title}</ModalHeader>
+        <ModalBody>{detail.description}</ModalBody>
+        <ModalFooter>{btnCompleteOrIncomplete()}</ModalFooter>
       </Modal>
     </div>
   );
