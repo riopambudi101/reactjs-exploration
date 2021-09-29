@@ -1,39 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-export const Category = () => {
+export const Category = ({ setStatus }) => {
+  const statusHandler = (e) => {
+    setStatus(e.target.value);
+  };
   return (
     <section className="w-2/6 category">
       <ul className="py-9 px-6 rounded-3xl" style={{ background: '#10355A' }}>
         <li className="all active flex items-center gap-3 py-3 px-5 rounded-lg mb-2 transition-all">
           <div className="h-4 w-4 rounded box"></div>
-          <Link
-            to="/"
-            className="font-semibold text-lg tracking-wide text-white"
+          <button
+            value="all"
+            className="text-lg tracking-wide text-white"
+            onClick={statusHandler}
           >
             All
-          </Link>
+          </button>
         </li>
         <li className="important active flex items-center gap-3 py-3 px-5 rounded-lg mb-2 transition-all">
           <div className="h-4 w-4 rounded box"></div>
-          <Link
-            to="/category/important"
-            className="font-semibold text-lg tracking-wide text-white"
+          <button
+            value="important"
+            className="text-lg tracking-wide text-white"
+            onClick={statusHandler}
           >
             Puenting
-          </Link>
+          </button>
         </li>
         <li className="personal flex items-center gap-3 py-3 px-5 rounded-lg mb-2 transition-all">
           <div className="h-4 w-4 rounded box"></div>
-          <Link to="/" className="text-lg tracking-wide text-white">
+          <button
+            value="personal"
+            className="text-lg tracking-wide text-white"
+            onClick={statusHandler}
+          >
             Personal
-          </Link>
+          </button>
         </li>
         <li className="work flex items-center gap-3 py-3 px-5 rounded-lg transition-all">
           <div className="h-4 w-4 rounded box"></div>
-          <Link to="/" className="text-lg tracking-wide text-white">
+          <button
+            value="work"
+            className="text-lg tracking-wide text-white"
+            onClick={statusHandler}
+          >
             Work
-          </Link>
+          </button>
         </li>
       </ul>
     </section>
