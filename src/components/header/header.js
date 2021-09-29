@@ -28,7 +28,7 @@ export default function Header({ className }) {
           ))}
         </Flex>
         <Button className="donate__btn" variant="secondary">
-          Get Starter
+          Get Started
         </Button>
         <MobileDrawer />
       </Container>
