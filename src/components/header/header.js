@@ -20,7 +20,7 @@ export default function Header({ className }) {
               to={item.path}
               spy={true}
               smooth={true}
-              offset={-70}
+              offset={-150}
               duration={500}
             >
               {item.label}
