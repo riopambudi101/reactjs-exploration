@@ -13,7 +13,7 @@ export const Home = () => {
         <Add />
         <div className="max-w-screen-lg mx-auto flex gap-6 mt-16">
           <Category setStatus={setStatus} />
-          <List />
+          <List status={status} />
         </div>
       </div>
     </div>
